@@ -1,5 +1,0 @@
-# Базовый файл содержащий в себе вебхуки(по умолчанию)
-
-https://discord.com/api/webhooks/*/*
-https://discord.com/api/webhooks/*/*
-https://discord.com/api/webhooks/*/*

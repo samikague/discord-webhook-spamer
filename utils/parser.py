@@ -3,7 +3,7 @@ import aiofiles
 from utils.validator import validate
 
 # Парсинг вебхуков из файла webhooks.txt(базового)
-async def parse(webhook_file):
+async def parse(webhook_file: str) -> list:
     webhooks = []
 
     try:

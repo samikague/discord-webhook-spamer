@@ -3,7 +3,7 @@ import asyncio
 from utils.parser import parse
 from flood import webhook_flood
 
-async def main():
+async def main() -> None:
     file = input("Enter the webhooks file path(press enter for default file): ")
     text = input("Enter the message to flood: ")
 
