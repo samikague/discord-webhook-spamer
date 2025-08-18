@@ -1,18 +1,17 @@
 import aiofiles
+import re
 
 from utils.validator import validate
 
-# Парсинг вебхуков из файла webhooks.txt(базового)
+# Парсинг вебхуков из переданного файла
 async def parse(webhook_file: str) -> list:
     webhooks = []
+    pattern = re.compile(r"https?://(?:discord|discordapp)\.com/api/webhooks/\d{17,19}/[a-zA-Z0-9_-]+", re.IGNORECASE)
 
     try:
         async with aiofiles.open(webhook_file, mode='r') as file:
-            async for line in file:
-                webhook = line.strip()
-                if webhook and await validate(webhook):
-                    if webhook not in webhooks:
-                        webhooks.append(webhook)
+            content = await file.read()
+            webhooks = pattern.findall(content)
 
     except FileNotFoundError:
         return {
